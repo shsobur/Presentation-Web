@@ -1,6 +1,7 @@
-import gsap from "gsap";
+import { gsap } from "gsap";
 import "./LoadingScreen.css";
 import PropTypes from "prop-types";
+import Mobile from "../Mobile/Mobile";
 import { FaPowerOff } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 
@@ -15,11 +16,23 @@ const MESSAGES = [
 
 const LoadingScreen = ({ onComplete }) => {
   const [isStarted, setIsStarted] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(
+    () => window.innerWidth < 1024,
+  );
   const containerRef = useRef(null);
   const progressRef = useRef(null);
   const textRef = useRef(null);
 
-  // Animation for the "Click to Start" Screen
+  // Screen‑width check with resize listener
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Animation for the "Click to Start" circle
   useEffect(() => {
     if (!isStarted) {
       const tl = gsap.timeline({ repeat: -1 });
@@ -36,7 +49,7 @@ const LoadingScreen = ({ onComplete }) => {
     }
   }, [isStarted]);
 
-  // Main Loading Animation
+  // Main loading sequence and subsequent exit
   const startSequence = () => {
     setIsStarted(true);
 
@@ -51,14 +64,14 @@ const LoadingScreen = ({ onComplete }) => {
       },
     });
 
-    // 1. Reveal Core
+    // Reveal HUD
     tl.fromTo(
       ".loading-hud",
       { opacity: 0, scale: 0.5 },
       { opacity: 1, scale: 1, duration: 1, ease: "back.out(1.7)" },
     );
 
-    // 2. Rotate HUD Rings
+    // Rotate rings
     gsap.to(".ring-outer", {
       rotation: 360,
       duration: 10,
@@ -72,7 +85,7 @@ const LoadingScreen = ({ onComplete }) => {
       ease: "none",
     });
 
-    // 3. Progress Logic
+    // Animate progress
     const obj = { value: 0 };
     tl.to(
       obj,
@@ -89,7 +102,7 @@ const LoadingScreen = ({ onComplete }) => {
       "-=0.5",
     );
 
-    // 4. Message Cycle
+    // Cycle through messages
     MESSAGES.forEach((msg, i) => {
       tl.call(
         () => {
@@ -108,12 +121,18 @@ const LoadingScreen = ({ onComplete }) => {
     });
   };
 
+  // ── Small‑screen path: show the Mobile blocker, no loading sequence ──
+  if (isSmallScreen) {
+    return <Mobile />;
+  }
+
+  // ── Normal path (≥ 1024px) ──────────────────────────────────
   return (
     <div ref={containerRef} className="ls-full-wrapper">
       <div className="star-field" />
 
       {!isStarted ? (
-        // --- SCREEN 1: THE PLAY BUTTON ---
+        // SCREEN 1: THE PLAY BUTTON
         <div className="ls-start-gate" onClick={startSequence}>
           <div className="start-btn-container">
             <div className="start-ring" />
@@ -126,7 +145,7 @@ const LoadingScreen = ({ onComplete }) => {
           <p className="start-sub">CLICK TO BOOT THE INTERFACE</p>
         </div>
       ) : (
-        // --- SCREEN 2: THE LOADING HUD ---
+        // SCREEN 2: THE LOADING HUD
         <div className="ls-loading-hud">
           <div className="hud-corners">
             <div className="c-box tl" />
