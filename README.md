@@ -1,8 +1,10 @@
-# সমবায় সমিতি – Cooperative Societies Interactive Presentation
+# Cooperative Societies Interactive Presentation
 
 An immersive, multi-slide presentation exploring the role, opportunities, and challenges of cooperative societies in Bangladesh. Built with **React**, animated with **GSAP**, and styled with a modern glass-morphism aesthetic.
 
 ![Presentation Screenshot](https://res.cloudinary.com/dmfsmcy2y/image/upload/v1777024154/Screenshot_From_2026-04-24_15-47-21_ls4oq2.png)
+
+![Presentation Screenshot](https://res.cloudinary.com/dmfsmcy2y/image/upload/v1777024309/Slide01_ixsi55.png)
 
 ---
 
@@ -117,8 +119,6 @@ src/
 | Slide 5 | Challenges grid                   |
 | Slide 6 | Solutions grid                    |
 | Slide 7 | Conclusion                        |
-
-> Replace `screenshot.png` with your own image and add more screenshots to the table as needed.
 
 ---
 
