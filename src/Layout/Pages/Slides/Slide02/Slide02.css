@@ -1,0 +1,326 @@
+/* ====== Root container (center layout) ====== */
+.s02-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* ====== Glass card main container ====== */
+.s02-card {
+  position: relative;
+  max-width: 80vw;
+  width: 1600px;
+  max-height: 80vh;
+  height: 80vh;
+  border-radius: 8px;
+
+  background: #07041694; /* glass bg__ */
+  backdrop-filter: blur(32px) saturate(170%); /* glass effect__ */
+  -webkit-backdrop-filter: blur(32px) saturate(170%);
+
+  border: 3px solid #a78bfa21;
+  box-shadow:
+    0 0 0 1px #6d28d912,
+    0 4px 6px #00000033,
+    0 20px 60px #050212a6,
+    inset 0 1px 0 #ffffff0d,
+    inset 0 -1px 0 #6d28d90f;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ====== Corner accents (UI detail) ====== */
+.s02-corner {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  z-index: 2;
+  pointer-events: none; /* ignore interaction__ */
+}
+
+.s02-corner--tl {
+  top: 15px;
+  left: 15px;
+  border-top: 1.5px solid #a78bfa66;
+  border-left: 1.5px solid #a78bfa66;
+}
+.s02-corner--tr {
+  top: 15px;
+  right: 15px;
+  border-top: 1.5px solid #a78bfa66;
+  border-right: 1.5px solid #a78bfa66;
+}
+.s02-corner--bl {
+  bottom: 15px;
+  left: 15px;
+  border-bottom: 1.5px solid #a78bfa66;
+  border-left: 1.5px solid #a78bfa66;
+}
+.s02-corner--br {
+  bottom: 15px;
+  right: 15px;
+  border-bottom: 1.5px solid #a78bfa66;
+  border-right: 1.5px solid #a78bfa66;
+}
+
+/* ====== Top accent line ====== */
+.s02-accent {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #8b5cf680 25%,
+    #c484fc 50%,
+    #8b5cf680 75%,
+    transparent 100%
+  );
+  flex-shrink: 0;
+}
+
+/* ====== Header section ====== */
+.s02-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 30px 0;
+  flex-shrink: 0; /* fixed height__ */
+}
+
+.s02-slide-num {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  letter-spacing: 0.25em;
+  color: #a78bfa99;
+  font-weight: 500;
+}
+
+/* ====== Language toggle ====== */
+.s02-toggle {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  background: #6d28d91a;
+  border: 2px solid #a78bfa29;
+  border-radius: 100em;
+  padding: 6px 10px;
+
+  cursor: pointer;
+  outline: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.s02-toggle:hover {
+  background: #6d28d933;
+  border-color: #a78bfa4d;
+}
+
+.s02-toggle-track {
+  position: relative;
+  width: 34px;
+  height: 18px;
+  border-radius: 100em;
+  background: #6d28d959;
+  border: 1px solid #a78bfa33;
+}
+
+.s02-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+  background: #c4b5fd;
+  box-shadow: 0 0 6px #c4b5fd99;
+
+  transition: left 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); /* smooth move__ */
+}
+
+.s02-toggle-thumb--right {
+  left: 18px; /* move right__ */
+}
+
+.s02-toggle-label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #c4b5fdcc;
+
+  min-width: 24px;
+  text-align: left;
+
+  transition: color 0.2s ease;
+}
+
+.s02-toggle:hover .s02-toggle-label {
+  color: #ddd6fe;
+}
+
+/* ====== Scrollable body ====== */
+.s02-body {
+  flex: 1;
+  overflow-y: auto; /* enable scroll__ */
+  padding: 0 20px 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  scrollbar-width: auto;
+  scrollbar-color: #8b5cf680 transparent;
+}
+
+/* scrollbar style__ */
+.s02-body::-webkit-scrollbar-thumb {
+  background: #8b5cf680;
+  border-radius: 10px;
+}
+
+/* ====== Title & divider ====== */
+.s02-title {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #f5f3ff;
+
+  margin: 20px 0 16px;
+}
+
+.s02-divider {
+  width: 100%;
+  max-width: 50%;
+  height: 4px;
+
+  background: linear-gradient(90deg, #8b5cf6bf, transparent);
+  border-radius: 2px;
+
+  margin-bottom: 24px;
+}
+
+/* ====== Topics grid ====== */
+.s02-topics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 720px) {
+  .s02-topics {
+    grid-template-columns: repeat(2, 1fr); /* 2 column layout__ */
+  }
+}
+
+/* ====== Single topic card ====== */
+.s02-topic {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+
+  padding: 15px;
+  border-radius: 8px;
+
+  background: #6d28d912;
+  border: 1px solid #a78bfa17;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.s02-topic:hover {
+  background: #6d28d921;
+  border-color: #a78bfa2e;
+  cursor: pointer; /* interactive feel__ */
+}
+
+.s02-topic-num {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  color: #c4b5fdb3;
+  flex-shrink: 0;
+}
+
+.s02-topic-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ====== Typography ====== */
+.s02-topic-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #e9d5ff;
+}
+
+.s02-topic-desc {
+  font-size: 1.8rem;
+  color: rgba(221, 214, 254, 0.75);
+}
+
+/* ====== Footer section ====== */
+.s02-footer {
+  padding: 15px 30px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: 1px solid #a78bfa12;
+  flex-shrink: 0;
+}
+
+/* ====== Buttons ====== */
+.s02-prev,
+.s02-next {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #6d28d929;
+  border: 1px solid #a78bfa33;
+  border-radius: 8px;
+  padding: 12px 32px;
+
+  color: #c4b5fde6;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.s02-prev:hover,
+.s02-next:hover {
+  background: #6d28d94d;
+  border-color: #a78bfa66;
+  color: #ede9fe;
+
+  transform: translateY(2px); /* press feel__ */
+}
+
+.s02-prev:active,
+.s02-next:active {
+  transform: translateY(4px); /* deeper press__ */
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .s02-root {
+    padding: 1rem;
+  }
+
+  .s02-card {
+    width: 90vw;
+    height: 85vh;
+  }
+}

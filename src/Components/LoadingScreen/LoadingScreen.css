@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;500&display=swap");
+
+:root {
+  --primary: #8b5cf6;
+  --bg: #050110;
+  --white: #ffffff;
+}
+
+.ls-full-wrapper {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.star-field {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.05;
+}
+
+/* --- PLAY BUTTON SCREEN --- */
+.ls-start-gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.start-btn-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.start-button {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  box-shadow: 0 0 30px var(--primary);
+  transition: 0.3s;
+}
+
+.start-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+}
+
+.start-text {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 8px;
+  color: white;
+}
+
+.start-sub {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+/* --- LOADING HUD --- */
+.ls-loading-hud {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hud-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* RINGS */
+.hud-rings {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.ring-outer {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed var(--primary);
+  opacity: 0.3;
+}
+
+.ring-inner {
+  width: 80%;
+  height: 80%;
+  border: 4px solid transparent;
+  border-top-color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.ring-static {
+  width: 60%;
+  height: 60%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hud-percentage {
+  font-family: "Orbitron", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* TEXT AREA */
+.hud-info {
+  text-align: center;
+  width: 400px;
+}
+
+.hud-msg {
+  color: var(--primary);
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  height: 20px;
+}
+
+.hud-progress-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--primary);
+  box-shadow: 0 0 15px var(--primary);
+  width: 0%;
+}
+
+.hud-footer {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 2px;
+}
+
+/* CORNERS */
+.hud-corners .c-box {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--primary);
+}
+
+.tl {
+  top: 40px;
+  left: 40px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.tr {
+  top: 40px;
+  right: 40px;
+  border-left: 0;
+  border-bottom: 0;
+}
+.bl {
+  bottom: 40px;
+  left: 40px;
+  border-right: 0;
+  border-top: 0;
+}
+.br {
+  bottom: 40px;
+  right: 40px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* DATA STREAMS */
+.hud-data-left,
+.hud-data-right {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 0.7rem;
+  color: rgba(139, 92, 246, 0.4);
+}
+.hud-data-left {
+  left: 60px;
+}
+.hud-data-right {
+  right: 60px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .hud-data-left,
+  .hud-data-right {
+    display: none;
+  }
+  .hud-rings {
+    width: 220px;
+    height: 220px;
+  }
+  .hud-percentage {
+    font-size: 2rem;
+  }
+  .hud-info {
+    width: 280px;
+  }
+}
