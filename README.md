@@ -2,9 +2,11 @@
 
 An immersive, multi-slide presentation exploring the role, opportunities, and challenges of cooperative societies in Bangladesh. Built with **React**, animated with **GSAP**, and styled with a modern glass-morphism aesthetic.
 
-![Presentation Screenshot](https://res.cloudinary.com/dmfsmcy2y/image/upload/v1777024154/Screenshot_From_2026-04-24_15-47-21_ls4oq2.png)
-
-![Presentation Screenshot](https://res.cloudinary.com/dmfsmcy2y/image/upload/v1777024309/Slide01_ixsi55.png)
+<p align="center">
+  <img src="https://res.cloudinary.com/dmfsmcy2y/image/upload/v1777024154/Screenshot_From_2026-04-24_15-47-21_ls4oq2.png" width="48%" />
+  &nbsp;
+  <img src="https://res.cloudinary.com/dmfsmcy2y/image/upload/v1777024309/Slide01_ixsi55.png" width="48%" />
+</p>
 
 ---
 
