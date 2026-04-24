@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { FaPowerOff } from "react-icons/fa";
 import "./LoadingScreen.css";
 import PropTypes from "prop-types";
+import { FaPowerOff } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
 
 const MESSAGES = [
   "INITIALIZING QUANTUM CORE",
